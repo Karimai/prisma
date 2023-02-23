@@ -14,11 +14,8 @@ from helper import convert_date_string
 
 logging.basicConfig(
     level=logging.INFO,  # or logging.DEBUG to see more detailed messages
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    handlers=[
-        logging.FileHandler("./app-logs/app.log"),
-        logging.StreamHandler()
-    ]
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[logging.FileHandler("./app-logs/app.log"), logging.StreamHandler()],
 )
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -88,8 +85,10 @@ def get_stock_price(item: FxRateCurrency):
     start_date = convert_date_string(start_date)
     end_date = convert_date_string(end_date)
 
-    exchange_rates_api = API(os.getenv("EXCHANGE_RATES_URL"),
-                             headers={"apikey": os.getenv("EXCHANGERATESAPI_ACCESS_KEY")})
+    exchange_rates_api = API(
+        os.getenv("EXCHANGE_RATES_URL"),
+        headers={"apikey": os.getenv("EXCHANGERATESAPI_ACCESS_KEY")},
+    )
     exchange_rates_params = {
         "start_date": start_date,
         "end_date": end_date,
@@ -103,7 +102,9 @@ def get_stock_price(item: FxRateCurrency):
         for dat, rates in exchange_rates_response["rates"].items()
     ]
 
-    marketstack_api = API(os.getenv("MARKETSTACK_BASE_URL"), headers={"Accept": "application/json"})
+    marketstack_api = API(
+        os.getenv("MARKETSTACK_BASE_URL"), headers={"Accept": "application/json"}
+    )
     marketstack_params = {
         "symbols": item.stock_symbol,
         "access_key": f"{os.getenv('MARKETSTACK_API_KEY')}",
