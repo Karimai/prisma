@@ -49,3 +49,7 @@ Response body
 
 ### test
 two simple tests are present in the test_main.html and test_main.py.
+
+
+### pre-commit
+Please install pre-commit on your local machine. It is necessary for code convention.
