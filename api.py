@@ -1,13 +1,7 @@
-import requests
 import logging
-
-import os
-
-
-
 from http import HTTPStatus
 
-
+import requests
 
 
 class API:
