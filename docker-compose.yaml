@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    container_name: prisma_task
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    restart: always
+    volumes:
+      - .:/code
+      - ./app-logs:/app/logs
+
+  log-collector:
+    container_name: prisma_task_logs
+    image: busybox
+    volumes:
+      - ./app-logs:/app/logs
+    command: tail -f /app/logs/app.log
