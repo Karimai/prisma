@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Karim Moradi <kmoradi.ai@gmail.com>"]
 readme = "README.md"
-#packages = [{include = "prisma_task"}]
+packages = [{include = "prisma_task"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
